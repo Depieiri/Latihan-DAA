@@ -1,0 +1,78 @@
+1. fungsi swap:
+def swap(a, b):
+    var3 = a
+    a = b
+    b = var3
+    return a, b
+
+2.bubble sort:
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = swap(arr[j], arr[j+1])
+    return arr
+
+arr = [100, 20, 60, 90, 40, 30, 10]
+print("Sorted array using Bubble Sort:", bubble_sort(arr))
+
+3. Insertion Sort:
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i-1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+arr = [89, 12, 57, 16, 25, 11, 75]
+print("Sorted array using Insertion Sort:", insertion_sort(arr))
+
+4.Selection Sort:
+def selection_sort(arr):
+    for i in range(len(arr)):
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = swap(arr[i], arr[min_idx])
+    return arr
+
+arr = [89, 12, 57, 16, 25]
+print("Sorted array using Selection Sort:", selection_sort(arr))
+
+
+5.Linear Search:
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+arr = ['y', 'u', 'i', 'w', 'o', 'a', 'q', 'u', 'j', 'p']
+target = 'a'
+index = linear_search(arr, target)
+print(f"Target '{target}' found at index:", index)
+
+6.Binary Search:
+def binary_search(arr, target):
+    arr.sort()  # Binary search requires sorted array
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+arr = ['y', 'u', 'i', 'w', 'o', 'a', 'q', 'u', 'j', 'p']
+target = 'a'
+index = binary_search(arr, target)
+print(f"Target '{target}' found at index:", index)
